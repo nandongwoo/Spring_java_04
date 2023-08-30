@@ -35,11 +35,11 @@ public class BankMain {
             } else if (menu == 4) {
                 System.out.println("출금 페이지");
                 bankService.outBalance();
-
             } else if (menu == 5) {
                 bankService.inout();
-                // Main페이지에서 생성한 BankRepository와
-                // BankService에서 생성한 BankRepository와 다름
+                // Main페이지에서 생성한 BankRepository에 저장된 ArrayList와
+                // BankService에서 생성한 BankRepository에 저장된 ArrayList와
+                // 값이 다름.
             } else if (menu == 0) {
                 System.out.println("프로그램을 종료합니다");
                 break;

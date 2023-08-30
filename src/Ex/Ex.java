@@ -5,27 +5,9 @@ import java.time.format.DateTimeFormatter;
 
 public class Ex {
     public static void main(String[] args) {
-        // 날짜정보 다루기
-        // 현재날짜 확인
+        // static으로 메서드를 만들면 클래스메서드라고 한다. (객체로 접근하지않고 클래스 이름, 메서드 이름으로 접근)
         LocalDateTime now = LocalDateTime.now();
-        System.out.println("now = " + now);
-        // 날짜를 원하는 형식으로 변경하기
-        String year = now.format(DateTimeFormatter.ofPattern("yyyy"));
-        System.out.println("year = " + year);
-        String month = now.format(DateTimeFormatter.ofPattern("MM"));
-        System.out.println("month = " + month);
-        String day = now.format(DateTimeFormatter.ofPattern("dd"));
-        System.out.println("day = " + day);
-        String hour = now.format(DateTimeFormatter.ofPattern("HH"));
-        System.out.println("hour = " + hour);
-        String minute = now.format(DateTimeFormatter.ofPattern("mm"));
-        System.out.println("minute = " + minute);
-        String second = now.format(DateTimeFormatter.ofPattern("ss"));
-        System.out.println("second = " + second);
-        String createdAt = now.format(DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss"));
-        System.out.println("createdAt = " + createdAt);
-        createdAt = now.format(DateTimeFormatter.ofPattern("yyyy년MM월dd일 HH시mm분ss초"));
-        System.out.println("createdAt = " + createdAt);
+        String createdAt = now.format(DateTimeFormatter.ofPattern("yyyy년MM월dd일 HH시mm분ss초"));
 
     }
 }
