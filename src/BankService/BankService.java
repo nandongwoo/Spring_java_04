@@ -96,24 +96,60 @@ public class BankService {
 
     }
 
-    public void list() {
-        for (ClientDTO clientDTO : bankRepository.list()) {
-            System.out.println(clientDTO.toString());
+    public void inout() {
+        boolean ren = true;
+        System.out.print("계좌번호:");
+        String account = scanner.next();
+        boolean result = bankRepository.identify(account);
+        while (ren) {
+            if (result) {
+                System.out.println("--------------------------------------------------");
+                System.out.println("1.전체내역 2.입금내역 3.출금내역 0.종료");
+                System.out.println("--------------------------------------------------");
+                int menu1 = scanner.nextInt();
+                if (menu1 == 1) {
+                    list(account);
+                } else if (menu1 == 2) {
+                    input(account);
+                } else if (menu1 == 3) {
+                    output(account);
+                } else if (menu1 == 0) {
+                    System.out.println("종료합니다.");
+                    break;
+                } else {
+                    System.out.println("번호를 확인하세요");
+                }
+            } else {
+                System.out.println("없는 계좌번호입니다.");
+                break;
+            }
         }
     }
 
-    public void input() {
+    public void list(String account) {
         for (ClientDTO clientDTO : bankRepository.list()) {
-            if (clientDTO.getWithdraw() == 0) {
+            if (account.equals(clientDTO.getAccountNumber())) {
                 System.out.println(clientDTO.toString());
             }
         }
     }
 
-    public void output() {
+    public void input(String account) {
         for (ClientDTO clientDTO : bankRepository.list()) {
-            if (clientDTO.getDeposit() == 0) {
-                System.out.println(clientDTO.toString());
+            if (account.equals(clientDTO.getAccountNumber())) {
+                if (clientDTO.getWithdraw() == 0) {
+                    System.out.println(clientDTO.toString());
+                }
+            }
+        }
+    }
+
+    public void output(String account) {
+        for (ClientDTO clientDTO : bankRepository.list()) {
+            if (account.equals(clientDTO.getAccountNumber())) {
+                if (clientDTO.getDeposit() == 0) {
+                    System.out.println(clientDTO.toString());
+                }
             }
         }
     }
